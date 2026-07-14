@@ -3,21 +3,11 @@
 import Link from "next/link";
 import { Github } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
-import { authenticate, authenticateWithProvider, type AuthMode, type AuthState } from "@/app/actions";
+import { authenticate, authenticateWithGithub, type AuthMode, type AuthState } from "@/app/actions";
 import { Brand } from "@/components/brand";
+import { GoogleSignInButton } from "@/components/google-sign-in-button";
 
 const initialState: AuthState = { status: "idle" };
-
-function GoogleIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4.3h5.4a4.7 4.7 0 0 1-2 3v2.8h3.5c2-1.9 3.2-4.6 3.2-7.9Z" />
-      <path fill="#34A853" d="M12 22c2.9 0 5.3-.9 7-2.6l-3.5-2.8a6.4 6.4 0 0 1-9.5-3.4H2.4V16A10.6 10.6 0 0 0 12 22Z" />
-      <path fill="#FBBC05" d="M6 13.2a6.3 6.3 0 0 1 0-4V6.4H2.4a10.6 10.6 0 0 0 0 9.5L6 13.2Z" />
-      <path fill="#EA4335" d="M12 5.6c1.6 0 3 .6 4.1 1.6l3-3A10.1 10.1 0 0 0 2.4 6.5L6 9.2A6.3 6.3 0 0 1 12 5.6Z" />
-    </svg>
-  );
-}
 
 export function EntryExperience({ demoAllowed, authIssue }: { demoAllowed: boolean; authIssue?: string }) {
   const [showSplash, setShowSplash] = useState(true);
@@ -109,12 +99,10 @@ export function EntryExperience({ demoAllowed, authIssue }: { demoAllowed: boole
         </form>
         <div className="auth-divider"><span>{copy.divider}</span></div>
         <div className="social-auth">
-          <form action={authenticateWithProvider}>
-            <input type="hidden" name="provider" value="google" />
-            <button type="submit"><GoogleIcon />{copy.google}</button>
-          </form>
-          <form action={authenticateWithProvider}>
-            <input type="hidden" name="provider" value="github" />
+          <div>
+            <GoogleSignInButton label={copy.google} />
+          </div>
+          <form action={authenticateWithGithub}>
             <button type="submit"><Github aria-hidden="true" />{copy.github}</button>
           </form>
         </div>

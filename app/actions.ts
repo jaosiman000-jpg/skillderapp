@@ -16,7 +16,6 @@ export type AuthState = {
 const emailSchema = z.string().trim().email().max(254);
 const passwordSchema = z.string().min(8).max(72);
 const modeSchema = z.enum(["sign-in", "sign-up"]);
-const providerSchema = z.enum(["google", "github"]);
 
 export async function authenticate(_: AuthState, formData: FormData): Promise<AuthState> {
   const mode = modeSchema.safeParse(formData.get("mode"));
@@ -56,16 +55,15 @@ export async function authenticate(_: AuthState, formData: FormData): Promise<Au
   redirect("/app");
 }
 
-export async function authenticateWithProvider(formData: FormData) {
-  const provider = providerSchema.safeParse(formData.get("provider"));
-  if (!provider.success || !hasSupabaseConfig()) redirect("/?auth=oauth-failed");
+export async function authenticateWithGithub() {
+  if (!hasSupabaseConfig()) redirect("/?auth=oauth-failed");
 
   const siteUrl = getSiteUrl();
   if (!siteUrl) redirect("/?auth=oauth-failed");
 
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: provider.data,
+    provider: "github",
     options: { redirectTo: new URL("/auth/callback", siteUrl).toString() },
   });
   if (error || !data.url) redirect("/?auth=oauth-failed");

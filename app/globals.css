@@ -52,8 +52,9 @@ a { color: inherit; }
 .auth-divider { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
 .auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .social-auth { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.social-auth form { min-width: 0; }
+.social-auth form, .social-auth > div { min-width: 0; }
 .social-auth button { width: 100%; min-height: 54px; display: flex; align-items: center; justify-content: center; gap: 9px; border: 1.5px solid #cfd4dc; border-radius: 999px; background: #fff; font-weight: 800; cursor: pointer; }
+.social-auth button:disabled { opacity: .55; cursor: wait; }
 .social-auth button:hover { background: #f7f8fa; }
 .social-auth button:focus-visible, .auth-tabs button:focus-visible, .primary-button:focus-visible { outline: 3px solid rgb(255 39 111 / 22%); outline-offset: 2px; }
 .social-auth svg { width: 20px; height: 20px; }

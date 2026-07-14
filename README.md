@@ -41,10 +41,10 @@ ALLOW_DEMO_MODE=true
 ## Configurar o Supabase
 
 1. Crie um projeto no Supabase.
-2. Preencha `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` em `.env.local`.
+2. Preencha `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` e o Client ID público `NEXT_PUBLIC_GOOGLE_CLIENT_ID` em `.env.local`.
 3. Aplique, em ordem, `supabase/migrations/202607130001_initial.sql`, `supabase/migrations/202607140001_community_submissions.sql` e `supabase/migrations/202607140002_explore.sql` pelo SQL Editor do Supabase ou pelo fluxo de migrations da Supabase CLI.
 4. Em Auth, mantenha a confirmação de e-mail ativada e configure as URLs de redirecionamento `http://localhost:3000/auth/callback` e `https://skillderapp.vercel.app/auth/callback`.
-5. Ative os provedores Google e GitHub no Supabase Auth. Cadastre nos dois provedores o callback exibido pelo Supabase (`https://SEU-PROJETO.supabase.co/auth/v1/callback`).
+5. Ative os provedores Google e GitHub no Supabase Auth. No Google Cloud, autorize `http://localhost:3000` e o domínio de produção como origens JavaScript. O callback do Supabase continua necessário para o GitHub.
 6. Defina `SUPABASE_SERVICE_ROLE_KEY` somente no servidor.
 
 O banco ativa Row Level Security em todas as tabelas e restringe dados pessoais ao próprio usuário.
