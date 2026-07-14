@@ -12,7 +12,7 @@ Web app mobile-first para descobrir skills populares em uma timeline. O usuário
 - like, dislike, match e conversa automática;
 - match gamificado em tela cheia, com acesso direto à mensagem;
 - catálogo alimentado pelo GitHub, com fallback local seguro;
-- catálogo atualizado a cada hora e atualizado em segundo plano no navegador;
+- catálogo atualizado diariamente pelo cron da Vercel e atualizado em segundo plano no navegador;
 - publicação comunitária com selo, autoria, categoria, capa opcional e mensagem obrigatória;
 - aba Explorar com busca por usuário, skill ou repositório e carrosséis por tendência, likes e categoria;
 - imagens com prioridade para capa do autor, imagem social do GitHub e fallback gerado pelo app;
