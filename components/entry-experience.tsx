@@ -29,7 +29,6 @@ export function EntryExperience({ demoAllowed, authIssue }: { demoAllowed: boole
         submitUp: "Criar conta com e-mail",
         pending: "Aguarde…",
         divider: "ou continue com",
-        google: "Google",
         github: "GitHub",
         language: "Continue in English",
         demo: "Explorar demonstração local",
@@ -49,7 +48,6 @@ export function EntryExperience({ demoAllowed, authIssue }: { demoAllowed: boole
         submitUp: "Create account with email",
         pending: "Please wait…",
         divider: "or continue with",
-        google: "Google",
         github: "GitHub",
         language: "Continuar em português",
         demo: "Explore local demo",
@@ -100,7 +98,7 @@ export function EntryExperience({ demoAllowed, authIssue }: { demoAllowed: boole
         <div className="auth-divider"><span>{copy.divider}</span></div>
         <div className="social-auth">
           <div>
-            <GoogleSignInButton label={copy.google} />
+            <GoogleSignInButton />
           </div>
           <form action={authenticateWithGithub}>
             <button type="submit"><Github aria-hidden="true" />{copy.github}</button>
