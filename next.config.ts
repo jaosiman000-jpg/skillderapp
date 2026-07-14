@@ -2,16 +2,17 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 const scriptPolicy = isDev
-  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-  : "script-src 'self' 'unsafe-inline'";
+  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com/gsi/client"
+  : "script-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/client";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
   scriptPolicy,
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style",
   "img-src 'self' data: blob: https://opengraph.githubassets.com https://avatars.githubusercontent.com https://images.unsplash.com https://*.supabase.co",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.github.com https://*.supabase.co wss://*.supabase.co",
+  "connect-src 'self' https://api.github.com https://accounts.google.com/gsi/ https://*.supabase.co wss://*.supabase.co",
+  "frame-src https://accounts.google.com/gsi/",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
